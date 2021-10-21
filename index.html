@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Formulario Jquery</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron mt-5">
+            <h1 class="text-center mb-3">Datos de Persona</h1>
+            <input type="text" id="nombre" placeholder="Digite el Nombre" class="form-control mb-3"
+            >
+            <input type="number" id="edad" placeholder="Digite la Edad" class="form-control mb-3"
+            >
+            <input type="date" id="fecha" class="form-control mb-3" >
+            <select id="estciv" class="form-control mb-3">
+                <option value="0">Seleccióne Estado Civil</option>
+                <option value="Soltero(a)">Soltero(a)</option>
+                <option value="Casado(a)">Casado(a)</option>
+                <option value="Union Libre">Union Libre</option>
+            </select>
+            <div class="text-center">
+                <button id="mostrar" class="btn btn-primary">Mostrar</button>
+                <button id="limpiar" class="btn btn-warning">Limpiar</button>
+            </div>
+                
+            <div id="salida">
+            </div>
+        </div>
+    </div>
+
+    <script>
+            $(document).ready(function(){
+               
+               
+                function mostrar(){
+                    let nombre=$("#nombre").val()
+                    let edad=$("#edad").val()
+                    let estcivil=$("#estciv").val()
+                    let fecha=$("#fecha").val()
+                    let mensaje="<p>Nombre "+nombre+"</p>"+
+                                "<p>Edad "+edad+"</p>"+
+                                "<p>Estado Civil "+estcivil+"</p>"+
+                                "<p>Fecha de Registro"+fecha+"</p>"
+                    $("#salida").html(mensaje)            
+                    console.log(nombre)
+                    console.log(edad)
+                    console.log(estcivil)
+                    console.log(fecha)
+                 }
+
+                 function limpiar(){
+                    $("#nombre").val("")
+                    $("#edad").val("")
+                    $("#estciv").val("0")
+                    $("#fecha").val("")
+                    $("#nombre").focus()
+                    $("#salida").html("")
+                 }
+                 
+                 $("#mostrar").click(function(){
+                     if($("#nombre").val()=="" || $("#edad").val()=="" || $("#fecha").val()==""){
+                         alert("Campo Vacio!!")
+                     }
+                     else if($("#estciv").val()=="0"){
+                        alert("Seleccione Estado Civil")
+                     }
+                     
+                     else{
+                        mostrar()
+                     }
+                 })
+
+                 $("#limpiar").click(function(){
+                    limpiar()
+                 })
+
+
+
+
+            })
+
+
+
+    </script>
+
+</body>
+
+</html>
